@@ -1,0 +1,14 @@
+{
+  "users":
+  [
+    {
+      "name": "дядя Вася",
+      "access_token": "ваш access_token",
+      "refresh_token": "ваш refresh_token",
+      "resumes_ids": ["id вашего резюме"]
+    }
+  ],
+  "telegram_bot_token": "",
+  "tg_user_id": "",
+  "tg_notify_only_on_errors": "True"
+}
