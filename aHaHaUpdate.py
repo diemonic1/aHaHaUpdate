@@ -63,15 +63,18 @@ def update_resume():
             response = post( f'https://api.hh.ru/resumes/{resume}/publish/', headers=headers)
 
             if response.status_code == 204:
-                return log('Резюме успешно обновлено!', user["name"])
+                log('Резюме успешно обновлено!', user["name"])
+                continue
             elif response.status_code == 429:
-                return log('Резюме пока нельзя обновить', user["name"])
+                log('Резюме пока нельзя обновить', user["name"])
+                continue
 
             error_code = response.status_code
             error_value = response.json()['errors'][0]['value']
 
             if error_value == 'token_expired':
-                return refresh_token(user)
+                refresh_token(user)
+                continue
 
             logError(f'Ошибка {error_code}: {error_value}', user["name"])
 
