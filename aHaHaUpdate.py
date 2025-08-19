@@ -93,11 +93,11 @@ def refresh_token(user):
     error_code = response.status_code
     error = response.json()['error']
     error_description = response.json()['error_description']
-    return logError(f'Ошибка {error_code}. {error}: {error_description}', user["name"])
+    logError(f'Ошибка {error_code}. {error}: {error_description}', user["name"])
 
 def replace_tokens(user, new_access_token, new_refresh_token):
     f = open('settings.json', encoding='utf-8')
-    data = json.load(f)
+    data = f.read()
     f.close()
 
     data = str(data).replace(user["access_token"], new_access_token)
